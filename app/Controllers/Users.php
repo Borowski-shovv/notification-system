@@ -28,12 +28,29 @@ class Users extends BaseController
 				// jezeli walidacacja przebiegla pomyslnie - ZALOGUJ SIE DO PANELU ADMINISTRACYJNEGO i zbuduj USER SESSION
 				$model = new UserModel();
 				
+				$user = $model->where('email', $this->request->getVar('email'))
+								->first();
+								
+				$this->setUserSession($user);
+				return redirect()->to('dashboard');
 			}
 		}
 
 		echo view('templates/header', $data);
 		echo view('login');
 		echo view('templates/footer', $data);
+	}
+
+	private function setUserSession($user){
+		$data = [
+			'id' => $user['id'],
+			'firstname' => $user['firstname'],
+			'lastname' => $user['lastname'],
+			'email' => $user['email'],
+			'isLoggedIn' => true,
+		];
+
+		session()->set($data);
 	}
 
 	public function register(){
