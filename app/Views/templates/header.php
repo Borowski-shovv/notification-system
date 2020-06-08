@@ -24,7 +24,7 @@
         <a class="nav-link" href="/dashboard">Panel nawigacyjny</a>
       </li>
       <li class="nav-item <?= ($uri->getSegment(1) == 'profile' ? 'active' : null) ?>">
-        <a class="nav-link" href="/profile">Profil</a>
+        <a class="nav-link" href="/notification">Notyfikacje</a>
       </li>
     </ul>
     <ul class="navbar-nav my-2 my-lg-0">

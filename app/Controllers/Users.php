@@ -93,6 +93,11 @@ class Users extends BaseController
 		echo view('templates/footer', $data);
 	}
 
+	public function logout(){
+		session()->destroy();
+		return redirect()->to('/');
+	}
+
 	//--------------------------------------------------------------------
 
 }
