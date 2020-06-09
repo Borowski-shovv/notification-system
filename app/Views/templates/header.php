@@ -23,7 +23,7 @@
       <li class="nav-item <?= ($uri->getSegment(1) == 'dashboard' ? 'active' : null) ?>">
         <a class="nav-link" href="/dashboard">Panel nawigacyjny</a>
       </li>
-      <li class="nav-item <?= ($uri->getSegment(1) == 'profile' ? 'active' : null) ?>">
+      <li class="nav-item <?= ($uri->getSegment(1) == 'notification' ? 'active' : null) ?>">
         <a class="nav-link" href="/notification">Notyfikacje</a>
       </li>
     </ul>

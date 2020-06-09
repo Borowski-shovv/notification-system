@@ -1,6 +1,6 @@
 <?php namespace App\Controllers;
 
-class Dashboard extends BaseController
+class Notification extends BaseController
 {
 	public function index()
 	{
@@ -9,7 +9,7 @@ class Dashboard extends BaseController
 		redirect()->to('/');
 		
 		echo view('templates/header', $data);
-		echo view('dashboard');
+		echo view('notification');
 		echo view('templates/footer', $data);
 	}
 

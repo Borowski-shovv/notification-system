@@ -33,6 +33,8 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Users::index');
 $routes->get('logout', 'Users::logout');
 $routes->match(['get', 'post'],'register', 'Users::register');
+$routes->match(['get', 'post'],'notification', 'Notification::index', ['filter' => 'auth']);
+$routes->get('dashboard', 'Dashboard::index', ['filter' => 'auth']);
 
 /**
  * --------------------------------------------------------------------
