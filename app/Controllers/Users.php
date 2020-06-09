@@ -8,9 +8,12 @@ class Users extends BaseController
 	{
 		$data = [];
 		helper(['form']);
-
+	
 
 		if($this->request->getMethod() == 'post'){
+
+			$ip = $this->request->getIPAddress();
+
 			//validation rules
 			$rules = [
 				'email' => 'required|min_length[6]|max_length[50]|valid_email',
@@ -20,17 +23,24 @@ class Users extends BaseController
 			$errors = [
 				'password' => ['validateUser' => 'Podany email lub hasło jest niepoprawne']
 			];
+
+			$model = new UserModel();
+
+			$user = $model->where('email', $this->request->getVar('email'))->first();
 		
-			if(! $this->validate($rules, $errors)) {
-				//jezeli walidacja nie przeszła, wyslij blad do formularza(register.php - zostana wyswietlone bledy)
+			if( !$this->validate($rules, $errors))
+			{
+				//jezeli walidacja nie przeszła, wyslij blad do formularza(login.php - zostana wyswietlone bledy)
 				$data['validation'] = $this->validator;
-			}else{
-				// jezeli walidacacja przebiegla pomyslnie - ZALOGUJ SIE DO PANELU ADMINISTRACYJNEGO i zbuduj USER SESSION
-				$model = new UserModel();
-				
-				$user = $model->where('email', $this->request->getVar('email'))
-								->first();
-								
+				if ( $user )
+				{
+					$model->updateLoginInfo(false, $user['id'], $ip);
+				}
+			}
+			else
+			{
+				// jezeli walidacacja przebiegla pomyslnie - ZALOGUJ SIE DO PANELU ADMINISTRACYJNEGO i zbuduj USER SESSION			
+				$model->updateLoginInfo(true, $user['id'], $ip);
 				$this->setUserSession($user);
 				return redirect()->to('dashboard');
 			}

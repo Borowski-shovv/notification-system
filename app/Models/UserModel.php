@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 
 class UserModel extends Model{
     protected $table = 'users';
-    protected $allowedFields = ['firstname', 'lastname', 'email', 'password', 'updated_at'];
+    protected $allowedFields = ['firstname', 'lastname', 'email', 'password'];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
 
@@ -23,6 +23,25 @@ class UserModel extends Model{
         $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
     return $data;
     }
+
+    public function updateLoginInfo($success, $user_id, $user_ip)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('users');
+        if ( $success )
+        {
+            $builder->set('success_login', 'NOW()', FALSE);
+        }
+        else
+        {
+            $builder->set('failed_login', 'NOW()', FALSE);
+        }
+
+        $builder->set('login_address', $user_ip);
+        $builder->where('id', $user_id);
+        $builder->update();
+    }
+
 }
 
 # za kazdym razem kiedy wysylamy ZADANIE (request) aby USERMODEL.PHP wstawil cos do naszej bazy danych
