@@ -4,46 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
-  <?php
+    <link href="admin/assets/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/admin/assets/css/sb-admin-2.min.css" rel="stylesheet">
+  </head>
+<body id="page-top">
+<?php
     $uri = service('uri');
   ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-  <a class="navbar-brand" href="/">LOGO</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  <?php if(session()->get('isLoggedIn')): ?>
-    <ul class="navbar-nav mr-auto">
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
       <li class="nav-item <?= ($uri->getSegment(1) == 'dashboard' ? 'active' : null) ?>">
-        <a class="nav-link" href="/dashboard">Panel nawigacyjny</a>
+        <a class="nav-link" href="/dashboard">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Panel Nawigacyjny</span></a>
       </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Interface
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item <?= ($uri->getSegment(1) == 'notification' ? 'active' : null) ?>">
-        <a class="nav-link" href="/notification">Notyfikacje</a>
+        <a class="nav-link" href="/notification" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Notyfikacje</span>
+        </a>
       </li>
-    </ul>
-    <ul class="navbar-nav my-2 my-lg-0">
-    <li class="nav-item">
+
+    
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>logi</span>
+        </a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+      <li class="nav-item">
         <a class="nav-link" href="/logout">Wyloguj</a>
       </li>
-    </ul>
-  <?php else: ?>
-  
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
 
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item <?= ($uri->getSegment(1) == '' ? 'active' : null) ?>">
-        <a class="nav-link" href="/">Login</a>
-      </li>
-      <li class="nav-item <?= ($uri->getSegment(1) == 'register' ? 'active' : null) ?>">
-        <a class="nav-link" href="/register">Register</a>
-      </li>
     </ul>
-  </div>
-  <?php endif; ?>
-    </div>
-</nav>
+    <!-- End of Sidebar -->
+
+
+
