@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
     <link href="admin/assets/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="/admin/assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/admin/assets/css/dataTables.bootstrap4.min.css" rel="stylesheet">
   </head>
 <body id="page-top">
 <?php
@@ -47,7 +47,7 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item <?= ($uri->getSegment(1) == 'notification' ? 'active' : null) ?>">
-        <a class="nav-link" href="/notification" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link" href=<?php echo base_url('/notification'); ?> aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
           <span>Notyfikacje</span>
         </a>

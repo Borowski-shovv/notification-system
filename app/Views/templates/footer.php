@@ -7,6 +7,7 @@
     </a>
 <!-- Bootstrap core JavaScript-->
   <script src="/admin/assets/js/jquery.min.js"></script>
+  <script>$('.datepicker').datepicker();</script>
   <script src="/admin/assets/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
@@ -14,7 +15,11 @@
 
   <!-- Custom scripts for all pages-->
   <script src="/admin/assets/js/sb-admin-2.min.js"></script>
+  <script src="/admin/assets/js/jquery.dataTables.min.js"></script>
+  <script src="/admin/assets/js/dataTables.bootstrap4.min.js"></script>
 
+  <!-- Page level custom scripts -->
+  <script src="/admin/assets/js/datatables-demo.js"></script>
 </body>
 
 </html>
