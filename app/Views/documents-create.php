@@ -1,4 +1,3 @@
-<script>$('.datepicker').datepicker();</script>
 <div class="container">
     <div class="row">
 <form>
@@ -15,11 +14,10 @@
     <label for="exampleFormControlSelect2">Kwota</label>
     <input type="" class="form-control" id="exampleFormControlInput1" >
   </div>
-  <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker">
-  <input placeholder="Select date" type="text" id="example" class="form-control">
-  <label for="example">Data płatności...</label>
-  <i class="fas fa-calendar input-prefix" tabindex=0></i>
-</div>
+  <div class="form-group"> 
+        <label class="control-label" for="date">Data</label>
+        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+    </div>
 
 </form>
 

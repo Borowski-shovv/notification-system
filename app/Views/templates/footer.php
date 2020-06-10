@@ -5,9 +5,9 @@
     <a class="scroll-to-top rounded" href="#page-top">
      <i class="fas fa-angle-up"></i>
     </a>
+    <!-- Date picker script -->
 <!-- Bootstrap core JavaScript-->
   <script src="/admin/assets/js/jquery.min.js"></script>
-  <script>$('.datepicker').datepicker();</script>
   <script src="/admin/assets/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
@@ -20,6 +20,19 @@
 
   <!-- Page level custom scripts -->
   <script src="/admin/assets/js/datatables-demo.js"></script>
+  <script>
+    $(document).ready(function(){
+      var date_input=$('input[name="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
 </body>
 
 </html>

@@ -1,19 +1,28 @@
 <?php 
 
 namespace App\Controllers;
+use App\Models\DocumentsModel;
 
-class Notification extends BaseController
+class Documents extends BaseController
 {
 	
 	public function index()
 	{
-	
+		
 		$data = [];
 		if(!session()->get('isLoggedIn'))
 		redirect()->to('/');
 
+		$model = new DocumentsModel();		
+
+		$data['documents'] = null;
+
+		if($documents = $model->getAllDocuments()){
+			$data['documents'] = $documents;
+		}
+
 		echo view('templates/header', $data);
-		echo view('notification', $data);
+		echo view('documents', $data);
 		echo view('templates/footer', $data);
 	}
 
@@ -23,7 +32,7 @@ class Notification extends BaseController
 		redirect()->to('/');
 
 		echo view('templates/header', $data);
-		echo view('notification-create', $data);
+		echo view('documents-create', $data);
 		echo view('templates/footer', $data);
 	}
 
