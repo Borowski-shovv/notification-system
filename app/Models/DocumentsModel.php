@@ -3,7 +3,7 @@
 use CodeIgniter\Model;
 
 class DocumentsModel extends Model{
-    protected $table = '';
+    protected $table = 'documents';
     protected $allowedFields = ['d_id', 'd_clientname', 'd_comment', 'd_amount', 'd_paydate', 'd_paymentmodel'];
     // protected $beforeInsert = ['beforeInsert'];
     // protected $beforeUpdate = ['beforeUpdate'];
