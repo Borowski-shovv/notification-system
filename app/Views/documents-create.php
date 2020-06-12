@@ -1,5 +1,7 @@
-<div class="container">
+ <div class="container">
     <div class="row">
+    <div class="card shadow mb-4"> 
+      <div class="card-body">
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 <h1>Dodaj nową notyfikacje</h1>
 <?php if(session()->get('success')): ?>
@@ -19,10 +21,13 @@
     <label for="exampleFormControlSelect2">Kwota</label>
     <input type="" class="form-control" id="exampleFormControlInput1" name="amount">
   </div>
-  <div class="form-group"> 
-        <label class="control-label" for="date">Data</label>
-        <input class="form-control" id="date" name="paydate" placeholder="MM/DD/YYY" type="text"/>
-  </div>
+  <div class="form-group">
+    <label class="control-label" for="date">Data</label>
+          <div class='input-group date' id='datetimepicker1'>
+            <input id="datepicker" type='text' name="paydate" class="form-control input-lg" />
+            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+          </div>
+        </div>
   <div class="form-group"> 
     <label class="control-label" for="date">Model płatności</label>
     <div class="form-check">
@@ -48,7 +53,8 @@
       </div>
     </div>
   <?php endif; ?>
-</form>
-
+</form>                
+</div>
+</div>
 </div>
 </div>

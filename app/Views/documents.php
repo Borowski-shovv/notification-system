@@ -1,10 +1,7 @@
 <div class="container-fluid">
   <h1 class="h3 mt-3 mb-3 text-gray-800">Notyfikacje</h1>
 
-  <?php
   
-    echo anchor('documents/create', 'Dodaj Nowy', 'class="btn btn-primary mb-3"');
-  ?>
   <div class="card shadow mb-4">
 
     <div class="card-body">
@@ -51,3 +48,5 @@
   </div>
 
 </div>
+          </div>
+          </div>

@@ -31,7 +31,7 @@ class Documents extends BaseController
 		$data = [];
 		if(!session()->get('isLoggedIn'))
 		redirect()->to('/');
-		
+		$data['trololo'] = true;
 		if($this->request->getMethod() == 'post'){
 			
 			$rules = [

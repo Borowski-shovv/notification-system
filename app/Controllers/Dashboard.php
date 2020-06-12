@@ -7,7 +7,7 @@ class Dashboard extends BaseController
 		$data = [];
 		if(!session()->get('isLoggedIn'))
 		redirect()->to('/');
-		
+
 		echo view('templates/header', $data);
 		echo view('dashboard');
 		echo view('templates/footer', $data);
