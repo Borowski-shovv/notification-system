@@ -35,7 +35,10 @@ $routes->get('logout', 'Users::logout');
 $routes->match(['get', 'post'],'register', 'Users::register', ['filter' => 'noauth']);
 $routes->match(['get', 'post'],'documents', 'Documents::index', ['filter' => 'auth']);
 $routes->match(['get', 'post'],'documents/create', 'Documents::create', ['filter' => 'auth']);
+$routes->match(['get', 'post'],'documents/update/(:num)', 'Documents::update/$1', ['filter' => 'auth']);
+$routes->match(['get', 'post'],'documents/delete/(:num)', 'Documents::delete/$1', ['filter' => 'auth']);
 $routes->get('dashboard', 'Dashboard::index', ['filter' => 'auth']);
+
 
 /**
  * --------------------------------------------------------------------

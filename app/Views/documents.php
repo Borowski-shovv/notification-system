@@ -15,6 +15,7 @@
               <th>Kwota</th>
               <th>Model rozliczeniowy</th>
               <th>Komentarz</th>
+              <th>Akcja</th>
             </tr>
           </thead>
           <tbody>
@@ -32,10 +33,15 @@
                 else {
                   $paymentmodel = 'miesięczny';
                 }
-
+              //   <a href="#" class="btn btn-danger btn-circle">
+              //   <i class="fas fa-trash"></i>
+              // </a>
                 echo '<td>'.$paymentmodel.'</td>'
-                .'<td>'.$document->d_comment.'</td></tr>';
-
+                .'<td>'.$document->d_comment.'</td>'
+                .'<td class="text-center">'
+                .anchor(site_url('documents/update/'.$document->d_id), 'Edytuj', 'class="btn btn-primary"').' '
+                .anchor(site_url('documents/delete/'.$document->d_id), 'Usuń', 'class="btn btn-danger"').'</td>
+                </tr>';
               }
             } else {
               echo '<p class="text-center"><b>Nie znaleziono żadnych płatności</b></p>';

@@ -37,7 +37,7 @@ class Documents extends BaseController
 			$rules = [
 				'clientname' => 'required',
 				'comment' => 'max_length[255]',
-				#'amount' => 'required'
+				'amount' => 'required'
 			];
 			
 			if(! $this->validate($rules)){
@@ -66,7 +66,49 @@ class Documents extends BaseController
 
 	}
 
+	public function update($document_id){
+		helper('form');
+		if(!session()->get('isLoggedIn'))
+		redirect()->to('/');
+
+		$data['trololo'] = false;
+		$model = new DocumentsModel();
+		$data['document'] = $model->getDocument($document_id);
+		if($this->request->getMethod() == 'post'){
+			
+			$rules = [
+				'clientname' => 'required',
+				'comment' => 'max_length[255]',
+				'amount' => 'required'
+			];
+			
+			if(! $this->validate($rules)){
+				$data['validation'] = $this->validator;
+			}else{
+				$model = new DocumentsModel();	
+
+				$updateNotification = [
 	
+					'd_clientname' => $this->request->getVar('clientname'),
+					'd_comment' => $this->request->getVar('comment'),
+					'd_amount' => $this->request->getVar('amount'),
+					'd_paydate' => $this->request->getVar('paydate'),
+					'd_paymentmodel' => $this->request->getVar('paymentmodel')
+				];
+				
+				$model->save($updateNotification);
+				$session->setFlashdata('success', 'Notyfikacja została zmieniona');
+			return redirect()->to('/documents-update');
+			}
+
+		}
+
+
+		echo view('templates/header', $data);
+		echo view('documents-update', $data);
+		echo view('templates/footer', $data);
+	}
+
 	//--------------------------------------------------------------------
 
 }

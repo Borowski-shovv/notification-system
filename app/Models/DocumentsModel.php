@@ -5,22 +5,24 @@ use CodeIgniter\Model;
 class DocumentsModel extends Model{
     protected $table = 'documents';
     protected $allowedFields = ['d_id', 'd_clientname', 'd_comment', 'd_amount', 'd_paydate', 'd_paymentmodel'];
-    // protected $beforeInsert = ['beforeInsert'];
-    // protected $beforeUpdate = ['beforeUpdate'];
-
-    // protected function beforeInsert(array $data){
-    //    $data = $this->passwordHash($data);
-    //    return $data;
-    // }
+    protected $db;
     
-    // protected function beforeUpdate(array $data){
-    //     $data = $this->passwordHash($data);
-    //     return $data;
-    // }
+    function __construct() {
+        $this->db = \Config\Database::connect();
+    }
 
    public function getAllDocuments() {
-    $db      = \Config\Database::connect();
-    $query = $db->query("SELECT * FROM documents");
+    $query = $this->db->query("SELECT * FROM documents");
+    if($result = $query->getResult()) {
+        return $result;
+    } 
+    else {
+        return false;
+    }
+   }
+
+   public function getDocument($document_id) {
+    $query = $this->db->query("SELECT * FROM documents WHERE d_id = $document_id");
     if($result = $query->getResult()) {
         return $result;
     } 
