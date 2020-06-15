@@ -6,13 +6,13 @@
      <i class="fas fa-angle-up"></i>
     </a>
     <!-- Date picker script -->
-  <script>
+<!-- Bootstrap core JavaScript-->
+<script>
         $('#datepicker').datepicker({
             uiLibrary: 'bootstrap4',
-            format: 'yyyy-dd-mm' 
+            format: 'yyyy-mm-dd' 
         });
     </script>
-<!-- Bootstrap core JavaScript-->
   <script src="/admin/assets/js/jquery.min.js"></script>
   <script src="/admin/assets/js/bootstrap.bundle.min.js"></script>
 
@@ -25,7 +25,6 @@
   <!-- Custom scripts for all pages-->
   <script src="/admin/assets/js/datatables-demo.js"></script>
   <!-- Page level custom scripts -->
-
 </body>
 
 </html>

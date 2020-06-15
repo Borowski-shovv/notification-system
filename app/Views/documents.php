@@ -3,7 +3,21 @@
 
   
   <div class="card shadow mb-4">
-
+  <?php if(session()->get('success')): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= session()->get('success') ?>
+                    </div>
+   <?php endif; ?>
+   <?php if(session()->get('newone')): ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= session()->get('newone') ?>
+                    </div>
+   <?php endif; ?>
+   <?php if(session()->get('editone')): ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= session()->get('editone') ?>
+                    </div>
+   <?php endif; ?>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -40,7 +54,7 @@
                 .'<td>'.$document->d_comment.'</td>'
                 .'<td class="text-center">'
                 .anchor(site_url('documents/update/'.$document->d_id), 'Edytuj', 'class="btn btn-primary"').' '
-                .anchor(site_url('documents/delete/'.$document->d_id), 'Usuń', 'class="btn btn-danger"').'</td>
+                .anchor(site_url('documents/delete/'.$document->d_id), 'Usuń', ['class' =>"btn btn-danger user_deleted", 'uid' => $document->d_id]).'</td>
                 </tr>';
               }
             } else {
@@ -56,3 +70,48 @@
 </div>
           </div>
           </div>
+          <div class="modal modal-danger fade" id="modal_popup">
+
+<div class="modal-dialog modal-sm">
+
+    //create form to change user status
+  <form action="<?php echo base_url(); ?>users/user_deleted" method="post"> 
+      <div class="modal-content">
+
+        <div class="modal-header" style="height: 150px;">
+
+            <h4 style="margin-top: 50px;text-align: center;">Are you sure, do you delete user?</h4>
+
+               //getting value in hidden field with the hep of ID's
+      <input type="hidden" name="id" id="user_id" value="">
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">No</button>
+
+            <button type="submit" name="submit" class="btn btn-success">Yes</button>
+
+        </div>
+
+      </div>
+
+    </form>
+
+</div>
+
+</div>
+
+<script type="text/javascript">
+		$(document).on('click','.user_deleted',function(){
+
+			var id = $(this).attr('uid');
+
+			$('#user_id').val(id);
+
+      $('#modal_popup').modal({backdrop: 'static', keyboard: true, show: true});
+      
+      return false;
+		});
+	</script>

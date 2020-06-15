@@ -4,7 +4,8 @@ use CodeIgniter\Model;
 
 class DocumentsModel extends Model{
     protected $table = 'documents';
-    protected $allowedFields = ['d_id', 'd_clientname', 'd_comment', 'd_amount', 'd_paydate', 'd_paymentmodel'];
+    protected $primaryKey = 'd_id';
+    protected $allowedFields = ['d_clientname', 'd_comment', 'd_amount', 'd_paydate', 'd_paymentmodel'];
     protected $db;
     
     function __construct() {
@@ -30,6 +31,7 @@ class DocumentsModel extends Model{
         return false;
     }
    }
+
 }
 
 # za kazdym razem kiedy wysylamy ZADANIE (request) aby USERMODEL.PHP wstawil cos do naszej bazy danych

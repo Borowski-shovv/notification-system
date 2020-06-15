@@ -1,4 +1,3 @@
-<?php var_dump($document); ?>
 <div class="container">
     <div class="row">
     <div class="card shadow mb-4"> 
@@ -12,20 +11,20 @@
 <?php endif; ?>
   <div class="form-group">
     <label for="exampleFormControlInput1">Nazwa klienta</label>
-    <input class="form-control" id="exampleFormControlInput1" name="clientname" value="<?= set_value('d_clientname') ?>">
+    <input class="form-control" id="exampleFormControlInput1" name="clientname" value="<?= $d_clientname ?>">
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Komentarz</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="comment" value="<?= set_value('d_comment') ?>"></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="comment"><?= $d_comment ?></textarea>
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect2">Kwota</label>
-    <input type="" class="form-control" id="exampleFormControlInput1" name="amount">
+    <input type="" class="form-control" id="exampleFormControlInput1" name="amount" value="<?= $d_amount ?>">
   </div>
   <div class="form-group">
     <label class="control-label" for="date">Data</label>
           <div class='input-group date' id='datetimepicker1'>
-            <input id="datepicker" type='text' name="paydate" class="form-control input-lg" />
+            <input id="datepicker" name="paydate" class="form-control input-lg" value="<?= $d_paydate ?>"/>
             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
           </div>
   </div>
