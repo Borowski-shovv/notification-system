@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\DocumentsModel;
+use App\Models\NotificationModel;
 
 class Documents extends BaseController
 {
@@ -45,17 +46,33 @@ class Documents extends BaseController
 			}else{
 				$model = new DocumentsModel();	
 
-				$newNotification = [
+				$newDocument = [
 					'd_clientname' => $this->request->getVar('clientname'),
 					'd_comment' => $this->request->getVar('comment'),
 					'd_amount' => $this->request->getVar('amount'),
 					'd_paydate' => $this->request->getVar('paydate'),
 					'd_paymentmodel' => $this->request->getVar('paymentmodel')
 				];
-				
-				$model->save($newNotification);
+				$isDocumentSaved = $model->save($newDocument);
 				$session = session();
-				$session->setFlashdata('newone', 'Notyfikacja została utworzona');
+
+				// ZAPIS NOTYFIKACJI
+				if($isDocumentSaved && $this->request->getVar('send_notification') == 'checked' ) {
+
+					$model_n = new NotificationModel();
+	
+					$newNotification = [
+						'n_paymentmodel' => $this->request->getVar('paymentmodel'), 
+						'n_d_id' => $model->getInsertID()
+					];
+					$model_n->save($newNotification);
+					$session->setFlashdata('newone', 'Dokument i Notyfikacja zostały utworzone');
+
+				} else if($isDocumentSaved) {
+					$session->setFlashdata('newone', 'Dokument został utworzony');
+				} else {
+					$session->setFlashdata('newone', 'Błąd tworzenia notyfikacji');
+				}
 
 			return redirect()->to('/documents');
 			}

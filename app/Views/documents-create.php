@@ -22,7 +22,7 @@
             <input type="" class="form-control" id="exampleFormControlInput1" name="amount">
           </div>
           <div class="form-check mb-3">
-            <input  class="form-check-input" type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+            <input  class="form-check-input" type="checkbox" id="subscribeNews" name="send_notification" value="checked">
             <label class="form-check-label" for="subscribeNews">Wysłać notyfikacje?</label>
           </div>
           <div class="form-group">

@@ -91,7 +91,7 @@
             echo anchor('', 'Usuń', ['class' =>"btn btn-danger", 'id' => 'deletebutton' ]).'</td>';
             ?>
          
-            <button type="button" class="btn btn-sucess pull-left" data-dismiss="modal" >Nie</button>
+            <button type="button" class="btn btn-success pull-left" data-dismiss="modal" >Nie</button>
         </div>
 
       </div>
