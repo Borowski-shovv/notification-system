@@ -13,7 +13,7 @@ class DocumentsModel extends Model{
     }
 
    public function getAllDocuments() {
-    $query = $this->db->query("SELECT * FROM documents");
+    $query = $this->db->query("SELECT * FROM documents LEFT JOIN notifications ON d_id = n_d_id");
     if($result = $query->getResult()) {
         return $result;
     } 
@@ -34,6 +34,3 @@ class DocumentsModel extends Model{
 
 }
 
-# za kazdym razem kiedy wysylamy ZADANIE (request) aby USERMODEL.PHP wstawil cos do naszej bazy danych
-# uruchamiana jest funkcja beforeInsert aby sprawdzic instrukcje dodawania nowych elementow do bazy danych
-# funckja beforeUpdate jest uruchamiana przed updatem bazy danych

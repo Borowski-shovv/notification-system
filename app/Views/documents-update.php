@@ -28,7 +28,7 @@
                 </div>
         </div>
         <div class="form-check mb-4">
-          <input  class="form-check-input" type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+          <input  class="form-check-input" type="checkbox" id="subscribeNews" name="send_update" value="checked">
           <label class="form-check-label" for="subscribeNews">Wysłać notyfikacje?</label>
         </div>
         <div class="form-group"> 

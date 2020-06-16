@@ -12,8 +12,13 @@ class NotificationModel extends Model{
         $this->db = \Config\Database::connect();
     }
 
-//     protected function saveNotification(array $data) {
-//         return $data;
-//    }
-
+    public function getDocument($document_id) {
+        $query = $this->db->query("SELECT * FROM documents WHERE n_d_id = $document_id");
+        if($result = $query->getResult()) {
+            return $result;
+        } 
+        else {
+            return false;
+        }
+    }
 }

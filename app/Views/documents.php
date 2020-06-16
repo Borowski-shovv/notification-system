@@ -29,6 +29,7 @@
               <th>Kwota</th>
               <th>Model rozliczeniowy</th>
               <th>Komentarz</th>
+              <th>Wysłać notyfikacje</th>
               <th>Akcja</th>
             </tr>
           </thead>
@@ -36,22 +37,28 @@
           <?php 
             if($documents){
               foreach($documents as $document){
+                //var_dump($document);
                 echo '<tr><td>'.$document->d_id
                 .'<td>'.$document->d_clientname.'</td>'
                 .'<td>'.$document->d_paydate.'</td>'
                 .'<td>'.$document->d_amount.'</td>';
-
+                
                 if($document->d_paymentmodel == 2){
                   $paymentmodel = 'roczny';
                 }
                 else {
                   $paymentmodel = 'miesięczny';
                 }
-              //   <a href="#" class="btn btn-danger btn-circle">
-              //   <i class="fas fa-trash"></i>
-              // </a>
+
                 echo '<td>'.$paymentmodel.'</td>'
-                .'<td>'.$document->d_comment.'</td>'
+                .'<td>'.$document->d_comment.'</td>';
+
+                if($document->n_d_id != null){
+                    $send = 'TAK';
+                }else {
+                    $send = 'NIE';
+                }
+                echo '<td>'.$send.'</td>'
                 .'<td class="text-center">'
                 .anchor(site_url('documents/update/'.$document->d_id), 'Edytuj', 'class="btn btn-primary"').' '
                 .anchor(site_url('documents/delete/'.$document->d_id), 'Usuń', ['class' =>"btn btn-danger user_deleted", 'uid' => $document->d_id]).'</td>
@@ -61,6 +68,8 @@
               echo '<p class="text-center"><b>Nie znaleziono żadnych płatności</b></p>';
             }
           ?>
+
+
           </tbody>
         </table>
       </div>
