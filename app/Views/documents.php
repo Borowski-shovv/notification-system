@@ -73,26 +73,25 @@
           <div class="modal modal-danger fade" id="modal_popup">
 
 <div class="modal-dialog modal-sm">
-
-    //create form to change user status
-  <form action="<?php echo base_url(); ?>users/user_deleted" method="post"> 
+  <form action="<?php echo base_url(); ?>/documents" method="post"> 
       <div class="modal-content">
 
         <div class="modal-header" style="height: 150px;">
 
-            <h4 style="margin-top: 50px;text-align: center;">Are you sure, do you delete user?</h4>
+            <h4 style="margin-top: 50px;text-align: center;">Na pewno chcesz usunąć notyfikacje?</h4>
 
-               //getting value in hidden field with the hep of ID's
+
       <input type="hidden" name="id" id="user_id" value="">
 
         </div>
 
         <div class="modal-footer">
 
-            <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">No</button>
-
-            <button type="submit" name="submit" class="btn btn-success">Yes</button>
-
+            <?php
+            echo anchor('', 'Usuń', ['class' =>"btn btn-danger", 'id' => 'deletebutton' ]).'</td>';
+            ?>
+         
+            <button type="button" class="btn btn-sucess pull-left" data-dismiss="modal" >Nie</button>
         </div>
 
       </div>
@@ -108,7 +107,7 @@
 
 			var id = $(this).attr('uid');
 
-			$('#user_id').val(id);
+			$('#deletebutton').attr("href", "/documents/delete/"+id);
 
       $('#modal_popup').modal({backdrop: 'static', keyboard: true, show: true});
       

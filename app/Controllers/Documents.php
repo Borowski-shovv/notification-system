@@ -144,6 +144,8 @@ class Documents extends BaseController
 		$model = new DocumentsModel();
 
 		if($model->delete($document_id)){
+
+
 			$session = session();
 			$session->setFlashdata('success', 'Notyfikacja została usunięta');
 			return redirect()->to('/documents');

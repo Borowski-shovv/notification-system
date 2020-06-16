@@ -97,9 +97,9 @@
 
 <?php
    if(isset($trololo)){
-     echo anchor('documents/', 'Powrót', 'class="btn btn-primary mb-3"');
+     echo anchor('documents/', 'Powrót', 'class="btn btn-primary align-items-center"');
   }else{
-    echo anchor('documents/create', 'Dodaj Notyfikacje', 'class="btn btn-primary mb-3"');
+    echo anchor('documents/create', 'Dodaj Notyfikacje', 'class="btn btn-primary align-items-center"');
    }
 ?>
 <!-- Topbar Navbar -->

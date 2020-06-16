@@ -1,6 +1,6 @@
- <div class="container">
+
     <div class="row">
-      <div class="card shadow mb-4"> 
+      <div class="card shadow ml-4 mb-4 w-50"> 
         <div class="card-body">
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <h1>Dodaj nową notyfikacje</h1>
@@ -59,4 +59,4 @@
       </div>
       </div>
     </div>
-</div>
+
